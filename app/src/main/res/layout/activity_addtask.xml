@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="21dp"
+        android:text="Add a new task"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"/>
+
+    <EditText
+        android:id="@+id/add_task_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textColor="@color/colorBlack"
+        android:padding="12dp"
+        android:layout_below="@+id/txt_title"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/border"
+        android:text="Enter task name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_addtaskdesc"
+        android:text="Add task description"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/add_task_name"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/add_task_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:inputType="text"
+        android:maxLines="5"
+        android:textColor="@color/colorBlack"
+        android:padding="12dp"
+        android:layout_below="@+id/txt_addtaskdesc"
+        android:background="@drawable/border"
+        android:text="Enter task description"/>
+
+    <Button
+        android:id="@+id/btn_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:gravity="bottom|right"
+        android:text="Add Task"
+        android:layout_below="@+id/add_task_description"
+        android:layout_alignEnd="@+id/add_task_description" />
+
+</RelativeLayout>

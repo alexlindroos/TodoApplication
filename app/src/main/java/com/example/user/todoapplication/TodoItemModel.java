@@ -13,7 +13,7 @@ public class TodoItemModel extends RealmObject {
     private String description;
     private String date;
     private String time;
-    private boolean reminder;
+   // private boolean reminder;
 
     public int getId() {
         return id;
@@ -55,12 +55,13 @@ public class TodoItemModel extends RealmObject {
         this.time = time;
     }
 
-    public boolean isReminder() {
+  /*  public boolean isReminder() {
         return reminder;
     }
 
     public void setReminder(boolean reminder) {
         this.reminder = reminder;
     }
-    
+*/
+
 }
