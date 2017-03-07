@@ -1,19 +1,20 @@
 package com.example.user.todoapplication;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.view.MenuItem;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
 import io.realm.RealmResults;
 
 /**
@@ -25,8 +26,6 @@ public class AddTask extends Activity {
     private EditText taskName;
     private EditText taskDescription;
     private Button addTask;
-    private Date date;
-    private Date time;
     private Realm realm;
 
 
@@ -44,44 +43,62 @@ public class AddTask extends Activity {
         taskDescription = (EditText)findViewById(R.id.add_task_description);
         addTask = (Button)findViewById(R.id.btn_add);
 
+        //Add task button onClickListener
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 System.out.println("CLICKED");
+                //Saves data to the Realm
                 saveDataToDatabase();
             }
         });
     }
 
-    public void saveDataToDatabase(){
+    public void saveDataToDatabase() {
         final String name = taskName.getText().toString();
         final String description = taskDescription.getText().toString();
+        final String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
 
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                // Add a task
-                TodoItemModel todoItemModel = realm.createObject(TodoItemModel.class);
-                todoItemModel.setId(1);
-                todoItemModel.setName(name);
-                todoItemModel.setDescription(description);
-                System.out.println("Task added");
+        // If EditTexts are empty make a toast
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(description)) {
+            Toast.makeText(AddTask.this, R.string.error_values, Toast.LENGTH_SHORT).show();
+        }else {
 
-                RealmResults<TodoItemModel> results = realm.where(TodoItemModel.class)
-                        .findAll();
-                System.out.println(results);
-            }
-        });
+            //Get current time
+            Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+2:00"));
+            Date currentLocalTime = cal.getTime();
+            DateFormat dateFormatter = new SimpleDateFormat("HH:mm a");
+            dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2:00"));
+            final String localTime = dateFormatter.format(currentLocalTime);
 
+
+            realm.executeTransaction(new Realm.Transaction() {
+                @Override
+                public void execute(Realm realm) {
+                    // Add a task
+                    TodoItemModel todoItemModel = realm.createObject(TodoItemModel.class);
+                    todoItemModel.setName(name);
+                    todoItemModel.setDescription(description);
+                    todoItemModel.setDate(date);
+                    todoItemModel.setTime(localTime);
+                    System.out.println("Task added");
+
+                    RealmResults<TodoItemModel> results = realm.where(TodoItemModel.class)
+                            .findAll();
+                    System.out.println(results);
+                }
+            });
+            finish();
+
+        }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Closes Realm connection
-        realm.close();
-    }
-
+        @Override
+        protected void onDestroy () {
+            super.onDestroy();
+            // Closes Realm connection
+            realm.close();
+        }
 
 
 }

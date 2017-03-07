@@ -8,21 +8,11 @@ import io.realm.RealmObject;
 
 public class TodoItemModel extends RealmObject {
 
-    private int id;
     private String name;
     private String description;
     private String date;
     private String time;
-   // private boolean reminder;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
     public String getName() {
         return name;
     }
@@ -55,13 +45,5 @@ public class TodoItemModel extends RealmObject {
         this.time = time;
     }
 
-  /*  public boolean isReminder() {
-        return reminder;
-    }
-
-    public void setReminder(boolean reminder) {
-        this.reminder = reminder;
-    }
-*/
 
 }
