@@ -11,22 +11,22 @@ import android.os.Handler;
 
 public class SplashScreen extends Activity {
 
-        //Splash screen takes 4 seconds
-        private static int SPLASH_TIME_OUT = 4000;
+    //Splash screen takes 4 seconds
+    private static int SPLASH_TIME_OUT = 4000;
 
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.splash_layout);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent i = new Intent(SplashScreen.this, MainActivity.class);
-                    startActivity(i);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.splash_layout);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(i);
 
-                    finish();
-                }
-            }, SPLASH_TIME_OUT);
-        }
+                finish();
+            }
+        }, SPLASH_TIME_OUT);
+    }
 
 }

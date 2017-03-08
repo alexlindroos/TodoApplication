@@ -56,6 +56,7 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
                 System.out.println("CLICKED");
                 //Saves data to the Realm
                 saveDataToDatabase();
+                Toast.makeText(AddTask.this, R.string.taskCreated, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -75,16 +76,17 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
         final String name = taskName.getText().toString();
         final String description = taskDescription.getText().toString();
         final String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+        final String notify = taskTime.getText().toString();
 
         // If EditTexts are empty make a toast
-        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(description)) {
+        if (TextUtils.isEmpty(name) || TextUtils.isEmpty(description) || TextUtils.isEmpty(notify)) {
             Toast.makeText(AddTask.this, R.string.error_values, Toast.LENGTH_SHORT).show();
-        }else {
+        }else{
 
             //Get current time
             Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+2:00"));
             Date currentLocalTime = cal.getTime();
-            DateFormat dateFormatter = new SimpleDateFormat("HH:mm a");
+            DateFormat dateFormatter = new SimpleDateFormat("HH:mm");
             dateFormatter.setTimeZone(TimeZone.getTimeZone("GMT+2:00"));
             final String localTime = dateFormatter.format(currentLocalTime);
 
@@ -121,12 +123,12 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
         taskTime.setText(notifyTime);
     }
 
-        @Override
-        protected void onDestroy () {
-            super.onDestroy();
-            // Closes Realm connection
-            realm.close();
-        }
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+        // Closes Realm connection
+        realm.close();
+    }
 
 
 }

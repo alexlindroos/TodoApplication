@@ -14,7 +14,7 @@
         android:layout_marginTop="21dp"
         android:layout_marginRight="8dp"
         android:layout_marginLeft="8dp"
-        android:text="Add a new task"
+        android:text="@string/addTask"
         android:textSize="18dp"
         android:textStyle="bold"
         android:textColor="@color/colorBlack"/>
@@ -40,7 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txt_addtaskdesc"
-        android:text="Add task description"
+        android:text="@string/addTaskDescription"
         android:textColor="@color/colorBlack"
         android:layout_below="@id/add_task_name"
         android:layout_marginTop="12dp"
@@ -73,7 +73,7 @@
         android:layout_below="@+id/add_task_description"
         android:layout_marginTop="12dp"
         android:layout_marginRight="8dp"
-        android:text="Set notification time"
+        android:text="@string/addTaskNotification"
         android:textColor="@color/colorBlack"
         android:textSize="18dp"
         android:textStyle="bold"/>
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:gravity="bottom|left"
-        android:text="Set time"
+        android:text="@string/setTime"
         android:onClick="showTimePickerDialog"
         android:layout_below="@+id/add_task_description"
         android:layout_alignStart="@+id/add_task_description" />
@@ -94,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="bottom|right"
-        android:text="Add Task"
+        android:text="@string/addTask2"
         android:layout_marginTop="23dp"
         android:layout_below="@+id/btn_time"
         android:layout_alignStart="@+id/btn_time" />

@@ -13,7 +13,7 @@ public class TodoItemModel extends RealmObject {
     private String date;
     private String time;
     private String notifyTime;
-    
+
     public String getName() {
         return name;
     }

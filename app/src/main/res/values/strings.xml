@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">TodoApplication</string>
     <string name="error_values">Please enter correct values!</string>
+    <string name="notify">Notify: </string>
+    <string name="created">Created: </string>
+    <string name="addTask">Add a new task</string>
+    <string name="addTaskDescription">Add task description</string>
+    <string name="addTaskNotification">Set notification time</string>
+    <string name="setTime">Set time</string>
+    <string name="addTask2">Add task</string>
+    <string name="taskCreated">Task created succesfully!</string>
 </resources>

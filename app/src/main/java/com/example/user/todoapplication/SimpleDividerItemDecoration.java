@@ -12,32 +12,32 @@ import android.view.View;
  */
 
 
- public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
-        private Drawable mDivider;
+public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+    private Drawable mDivider;
 
-        //Constuctor
-        public SimpleDividerItemDecoration(Context context) {
-            mDivider = ContextCompat.getDrawable(context,R.drawable.divider);
-        }
+    //Constuctor
+    public SimpleDividerItemDecoration(Context context) {
+        mDivider = ContextCompat.getDrawable(context,R.drawable.divider);
+    }
 
-        //Method for making a divider for RecyclerView
-        @Override
-        public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
-            int left = parent.getPaddingLeft();
-            int right = parent.getWidth() - parent.getPaddingRight();
+    //Method for making a divider for RecyclerView
+    @Override
+    public void onDrawOver(Canvas c, RecyclerView parent, RecyclerView.State state) {
+        int left = parent.getPaddingLeft();
+        int right = parent.getWidth() - parent.getPaddingRight();
 
-            int childCount = parent.getChildCount();
-            for (int i = 0; i < childCount; i++) {
-                View child = parent.getChildAt(i);
+        int childCount = parent.getChildCount();
+        for (int i = 0; i < childCount; i++) {
+            View child = parent.getChildAt(i);
 
-                RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
 
-                int top = child.getBottom() + params.bottomMargin;
-                int bottom = top + mDivider.getIntrinsicHeight();
+            int top = child.getBottom() + params.bottomMargin;
+            int bottom = top + mDivider.getIntrinsicHeight();
 
-                mDivider.setBounds(left, top, right, bottom);
-                mDivider.draw(c);
-            }
+            mDivider.setBounds(left, top, right, bottom);
+            mDivider.draw(c);
         }
     }
+}
 
