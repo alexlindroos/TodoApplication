@@ -133,7 +133,7 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
         DialogFragment newFragment = new TimePickerFragment();
         newFragment.show(getFragmentManager(), "timePicker");
     }
-
+    //When TimePicking completed puts time in to textview
     public void onComplete(String time) {
         notifyTime = time;
         taskTime.setText(notifyTime);

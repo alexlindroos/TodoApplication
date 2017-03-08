@@ -71,6 +71,7 @@ public class TodoItemAdapter extends RealmRecyclerViewAdapter<TodoItemModel, Tod
             });
         } finally {
             if(realm != null) {
+                //Closes Realm connection
                 realm.close();
             }
         }

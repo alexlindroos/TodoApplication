@@ -13,9 +13,10 @@ import android.view.View;
 
 
 public class SimpleDividerItemDecoration extends RecyclerView.ItemDecoration {
+
     private Drawable mDivider;
 
-    //Constuctor
+    //Constructor
     public SimpleDividerItemDecoration(Context context) {
         mDivider = ContextCompat.getDrawable(context,R.drawable.divider);
     }
