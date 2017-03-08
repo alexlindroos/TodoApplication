@@ -1,7 +1,10 @@
 package com.example.user.todoapplication;
 
-import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.DialogFragment;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
@@ -49,6 +52,17 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
         setTime = (Button)findViewById(R.id.btn_time);
         taskTime = (TextView)findViewById(R.id.txt_time);
 
+        //AlarmService
+        final AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent notificationIntent = new Intent("android.media.action.DISPLAY_NOTIFICATION");
+        notificationIntent.addCategory("android.intent.category.DEFAULT");
+
+        final PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        //Set 30second timer for notification just for demo purpose
+        final android.icu.util.Calendar cal = android.icu.util.Calendar.getInstance();
+        cal.add(android.icu.util.Calendar.SECOND, 30);
+
         //Add task button onClickListener
         addTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +70,8 @@ public class AddTask extends FragmentActivity implements TimePickerFragment.OnCo
                 System.out.println("CLICKED");
                 //Saves data to the Realm
                 saveDataToDatabase();
+                //Launch alarm
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
                 Toast.makeText(AddTask.this, R.string.taskCreated, Toast.LENGTH_SHORT).show();
             }
         });
