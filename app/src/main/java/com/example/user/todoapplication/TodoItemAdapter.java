@@ -38,8 +38,10 @@ public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.data = model;
         //Sets data in to the textViews
         holder.name.setText(model.getName());
+        holder.desc.setText(model.getDescription());
         holder.time.setText(model.getTime());
         holder.date.setText(model.getDate());
+        holder.notifyTime.setText(model.getNotifyTime());
         }
 
 class MyViewHolder extends RecyclerView.ViewHolder {
@@ -48,13 +50,17 @@ class MyViewHolder extends RecyclerView.ViewHolder {
     public TextView name;
     public TextView time;
     public TextView date;
+    public TextView desc;
+    public TextView notifyTime;
 
 
     public MyViewHolder(View view) {
         super(view);
         name = (TextView) view.findViewById(R.id.task_name);
+        desc = (TextView) view.findViewById(R.id.task_description);
         time = (TextView) view.findViewById(R.id.task_time);
         date = (TextView) view.findViewById(R.id.task_date);
+        notifyTime = (TextView) view.findViewById(R.id.task_notifyTime);
     }
 
 

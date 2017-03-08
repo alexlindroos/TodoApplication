@@ -12,6 +12,7 @@ public class TodoItemModel extends RealmObject {
     private String description;
     private String date;
     private String time;
+    private String notifyTime;
     
     public String getName() {
         return name;
@@ -45,5 +46,11 @@ public class TodoItemModel extends RealmObject {
         this.time = time;
     }
 
+    public String getNotifyTime() {
+        return notifyTime;
+    }
 
+    public void setNotifyTime(String notifyTime) {
+        this.notifyTime = notifyTime;
+    }
 }
